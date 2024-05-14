@@ -1,7 +1,7 @@
 <ul>
   <% @participants.each do |participant| %>
     <li>
-      <%= participant.name %>: <%= participant.consumptions_count %>
+      <%= participant.name %> <%= participant.emoji_id %>: <%= participant.consumptions_count %>
     </li>
   <% end %>
 </ul>
