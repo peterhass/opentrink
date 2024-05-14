@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :consumptions
   end
 
-  resource :highscore
+  resource :scoreboard
 end
