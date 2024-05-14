@@ -1,3 +1,14 @@
+# IDEAS / NOTES
+- Let users choose any name and always display them with a unique set of emojis based on their id
+- Scoreboard: 
+    - Show beer consumption per hour
+    - Show trend (like with stocks)
+    - Animation when order changes
+    - Overlay for major changes in the list (like bowling text animations)
+    - Rotating display
+- Let users create groups between themselves to contribute to the group ranking
+- How to improve the process of tracking multiple consumptions one after another
+
 # README
 
 This README would normally document whatever steps are necessary to get the
