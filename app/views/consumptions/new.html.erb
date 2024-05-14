@@ -1,0 +1,7 @@
+<h1>Bier tracken</h1>
+
+<%= form_with model: [@participant, @consumption], data: { turbo: false } do |form| %>
+  <%= form.label :count, 'Anzahl' %>
+  <%= form.text_field :count, type: :number %>
+  <%= form.submit %>
+<% end %>

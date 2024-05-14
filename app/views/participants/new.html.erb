@@ -1,0 +1,11 @@
+<h1>Gewinnspiel</h1>
+
+<%= form_with model: @participant, data: { turbo: false } do |form| %>
+  <%= form.label :name, "Teilnehmer-Name" %>
+  <%= form.text_field :name %>
+  <%= form.submit label: "Teilnehmen!" %>
+<% end %>
+
+<% @participant.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>

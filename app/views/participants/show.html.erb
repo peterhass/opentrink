@@ -1,0 +1,3 @@
+<p>Du nimmst jetzt teil, <%= @participant.name %></p>
+<%= RQRCode::QRCode.new(new_participant_consumption_url(@participant.id)).as_svg.html_safe %>
+<%= link_to('track consumption', new_participant_consumption_url(@participant.id)) if Rails.env.development? %>

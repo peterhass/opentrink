@@ -1,0 +1,10 @@
+<h1>Konsum von "<%= @participant.name %>"</h1>
+
+<ul>
+  <% @consumptions.each do |consumption| %>
+    <li>
+      <%= consumption.created_at.iso8601 %>
+      <strong><%= consumption.count %> Stk</strong>
+    </li>
+  <% end %>
+</ul>
