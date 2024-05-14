@@ -1,0 +1,7 @@
+<ul>
+  <% @participants.each do |participant| %>
+    <li>
+      <%= participant.name %>: <%= participant.consumptions_count %>
+    </li>
+  <% end %>
+</ul>

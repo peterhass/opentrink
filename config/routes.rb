@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :participants do 
     resources :consumptions
   end
+
+  resource :highscore
 end
