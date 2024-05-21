@@ -48,6 +48,9 @@ gem "simple_form"
 
 gem 'rqrcode', '~> 2.0'
 
+gem 'scenic'
+gem 'scenic_sqlite_adapter'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]

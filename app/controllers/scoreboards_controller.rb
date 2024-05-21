@@ -1,5 +1,5 @@
 class ScoreboardsController < ApplicationController
   def show 
-    @participants = Participant.by_consumptions_desc.limit(10).reject { |p| p.consumptions_count.nil? }
+    @participant_scores = ParticipantScore.total_ranked
   end
 end
