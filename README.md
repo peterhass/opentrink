@@ -8,6 +8,9 @@
     - Rotating display
 - Let users create groups between themselves to contribute to the group ranking
 - How to improve the process of tracking multiple consumptions one after another
+- Admin user management
+    - Create / list users
+    - Single usage login link
 
 # README
 
