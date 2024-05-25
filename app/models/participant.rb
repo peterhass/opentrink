@@ -7,6 +7,8 @@ class Participant < ApplicationRecord
     self.uid = SecureRandom.uuid if self.uid.blank?
   end
 
+  scope :newest_first, -> { order(created_at: :desc) }
+
   def emoji_id
     list = []
     remaining = id

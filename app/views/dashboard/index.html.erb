@@ -1,0 +1,11 @@
+<h1>Gewinnspiel App</h1>
+<ul>
+  <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
+  <li>
+    <%= link_to 'Teilnehmer-Registration', new_participant_path %>
+  </li>
+</ul>
+<h2>Teilnehmer Registration</h2>
+<p>Entweder via Direktlink: <%= link_to 'Teilnehmer-Registration', new_participant_path %>
+</p>
+<p>Oder via QR code: <%= image_tag RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url %> </p

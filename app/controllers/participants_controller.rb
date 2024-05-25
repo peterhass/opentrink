@@ -1,4 +1,8 @@
 class ParticipantsController < ApplicationController
+  def index
+    @participants = Participant.newest_first
+  end
+
   def show
     @participant = Participant.find_by(uid: params[:id])
   end

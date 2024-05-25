@@ -1,0 +1,11 @@
+<p>
+  Anzahl der Teilnehmer: <%= @participants.count %>
+</p>
+<ul>
+  <% @participants.each do |participant| %>
+    <li>
+      <%= link_to participant.name, participant_path(participant.uid) %>
+      <%= "(#{participant.created_at.to_formatted_s})" %>
+    </li>
+  <% end %>
+</ul>
