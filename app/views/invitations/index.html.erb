@@ -8,7 +8,12 @@ Neue <%= link_to 'Bar-Einladung erstellen', invitations_path(invitation: { role:
       <%= "Admin-Link" if invitation.admin? %>
       <%= "Bar-Link" if invitation.bar? %>
       
-      #<%= index + 1 %> (<%= link_to 'QR Code', RQRCode::QRCode.new(new_invitation_user_url(invitation)).as_png(size: 500).to_data_url %>) <%= "[deaktiviert]" if invitation.deactivated? %>
+      #<%= index + 1 %> (<%= link_to 'QR Code', RQRCode::QRCode.new(new_invitation_user_url(invitation)).as_png(size: 500).to_data_url %>) 
+      <% if invitation.activated? %>
+        <%= link_to "(deaktivieren)", invitation_path(invitation.id, invitation: { deactivated: true }), data: { turbo_method: 'put' } %>
+      <% else %>
+        [deaktiviert]
+      <% end %>
      <ul>
       <% invitation.users.each do |user| %>
         <li><%= user.name %> #<%= user.id %></li>

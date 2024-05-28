@@ -6,15 +6,20 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = Invitation.new(invitation_params)
+    @invitation = Invitation.new(params.require(:invitation).permit(:role))
 
     @invitation.save!
     redirect_to action: :index
   end
 
+  def update
+    invitation.update!(params.require(:invitation).permit(:deactivated))
+    redirect_to action: :index
+  end
+
   private
 
-  def invitation_params
-    params.require(:invitation).permit(:role)
+  def invitation
+    @invitation ||= Invitation.find_by(id: params[:id])
   end
 end
