@@ -7,11 +7,16 @@ class UsersController < ApplicationController
     @user = invitation.users.build(user_params)
 
     if @user.save
-      auto_login(@user)
+      auto_login(@user, should_remember: true)
       redirect_to root_path, notice: 'User was created'
     else
       render action: :new
     end
+  end
+
+  def destroy
+    logout
+    redirect_to root_url, notice: "Logged out"
   end
 
   private

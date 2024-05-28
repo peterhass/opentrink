@@ -1,7 +1,10 @@
 <h1>Gewinnspiel App</h1>
 <% if current_user %>
   <p>
-    Du bist <%= current_user.name %>
+  Du bist <%= current_user.name %> 
+  <%= "(Admin)" if current_user.admin? %>
+  <%= "(Bar)" if current_user.bar? %>
+  <%= link_to 'Logout', user_path(current_user), data: { turbo_method: :delete } %>
   </p>
 <% end %>
 <ul>

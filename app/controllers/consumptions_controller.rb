@@ -1,5 +1,5 @@
 class ConsumptionsController < ApplicationController
-  before_action :require_login
+  before_action :require_bar
 
   def new
     @consumption = participant.consumptions.new

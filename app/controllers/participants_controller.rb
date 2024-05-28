@@ -1,4 +1,6 @@
 class ParticipantsController < ApplicationController
+  before_action :require_bar, except: %i[new create]
+
   def index
     @participants = Participant.newest_first
   end

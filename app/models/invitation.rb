@@ -6,6 +6,8 @@ class Invitation < ApplicationRecord
 
   scope :newest_first, -> { order(created_at: :desc) }
 
+  enum :role, { bar: 'bar', admin: 'admin' }
+
   def activated?
     !deactivated?
   end

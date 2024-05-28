@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   before_create :set_password
 
+  delegate :bar?, to: :invitation
+  delegate :admin?, to: :invitation
+
   private
 
   def set_password
