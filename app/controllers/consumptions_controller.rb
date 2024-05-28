@@ -1,4 +1,6 @@
 class ConsumptionsController < ApplicationController
+  before_action :require_login
+
   def new
     @consumption = participant.consumptions.new
     @consumption.count = 1 if @consumption.count.blank?
