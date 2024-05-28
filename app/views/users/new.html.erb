@@ -1,0 +1,7 @@
+<h1>Login</h1>
+
+<%= form_with model: [@user.invitation, @user], data: { turbo: false } do |form| %>
+  <%= form.label :name, 'Benutzer-Name' %>
+  <%= form.text_field :name %>
+  <%= form.submit label: "Login" %>
+<% end %>

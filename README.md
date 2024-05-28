@@ -8,9 +8,17 @@
     - Rotating display
 - Let users create groups between themselves to contribute to the group ranking
 - How to improve the process of tracking multiple consumptions one after another
-- Admin user management
-    - Create / list users
-    - Single usage login link
+- User management
+    - Invitation based system
+    - Admin can create new Invitation
+    - Every Invitation has an unique token 
+        https://fullstackheroes.com/tutorials/rails/sorcery-passwordless-authentication/
+    - Given you're not authenticated and you visit an invitation link, a new user is created (username = Orderman123, pw = garbage) and immediately logged in
+    - Invitation admin page shows which users are created using which Invitation
+    - Invitations can be deactivated
+    - Users can be deactivated
+    - Consumptions are associated with Users to be able to clean up data in worst case
+- Split up hosts between read-only and write-only
 
 # README
 

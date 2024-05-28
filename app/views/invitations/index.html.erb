@@ -1,0 +1,13 @@
+<h1>Einladungen</h1>
+<ul>
+  <% @invitations.each_with_index do |invitation, index| %>
+    <li>
+     Link #<%= index + 1 %> (<%= link_to 'QR Code', RQRCode::QRCode.new(new_invitation_user_url(invitation)).as_png(size: 500).to_data_url %>) <%= "[deaktiviert]" if invitation.deactivated? %>
+     <ul>
+      <% invitation.users.each do |user| %>
+        <li><%= user.name %> #<%= user.id %></li>
+      <% end %>
+     </ul>
+    </li>
+  <% end %>
+</ul>

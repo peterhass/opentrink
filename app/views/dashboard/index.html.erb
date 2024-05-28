@@ -1,4 +1,9 @@
 <h1>Gewinnspiel App</h1>
+<% if current_user %>
+  <p>
+    Du bist <%= current_user.name %>
+  </p>
+<% end %>
 <ul>
   <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
   <li>

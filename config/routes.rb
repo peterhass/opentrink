@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'dashboard#index'
-  resources :participants do 
+
+  resources :invitations do
+    resources :users
+  end
+  resources :participants do
     resources :consumptions
   end
 
