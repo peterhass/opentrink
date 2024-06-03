@@ -1,3 +1,17 @@
+# Dev setup
+
+App has no external dependencies
+
+```bash
+rvm use # or similar: check .ruby-version
+bundle install
+rake db:setup db:seed # Note printed Invitation ID
+./bin/dev
+
+# Visit http://localhost:3000/invitations/<InvitationId>/users/new to login
+```
+
+
 # IDEAS / NOTES
 - Let users choose any name and always display them with a unique set of emojis based on their id
 - Scoreboard: 
