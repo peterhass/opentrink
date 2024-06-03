@@ -1,3 +1,8 @@
 <p>Du nimmst jetzt teil, <%= @participant.name %></p>
-<%= RQRCode::QRCode.new(new_participant_consumption_url(@participant.id)).as_svg.html_safe %>
+
+<div class="flex">
+  <%= RQRCode::QRCode.new(new_participant_consumption_url(@participant.id)).as_svg(viewbox: true).html_safe %>
+</div>
+
 <%= link_to('track consumption', new_participant_consumption_url(@participant.id)) if Rails.env.development? %>
+

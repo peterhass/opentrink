@@ -2,7 +2,7 @@
 <p>
 Neue <%= link_to 'Bar-Einladung erstellen', invitations_path(invitation: { role: :bar }), data: { turbo_method: :post } %>
 </p>
-<ul>
+<ul class="classic-ul">
   <% @invitations.each_with_index do |invitation, index| %>
     <li>
       <%= "Admin-Link" if invitation.admin? %>
@@ -14,7 +14,7 @@ Neue <%= link_to 'Bar-Einladung erstellen', invitations_path(invitation: { role:
       <% else %>
         <%= link_to "(aktivieren)", invitation_path(invitation.id, invitation: { deactivated: false }), data: { turbo_method: 'put' } %>
       <% end %>
-     <ul>
+     <ul class="classic-ul">
       <% invitation.users.newest_first.each do |user| %>
         <li>
           <%= user.name %> #<%= user.id %>

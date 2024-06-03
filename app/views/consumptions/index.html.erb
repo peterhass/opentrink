@@ -1,6 +1,6 @@
 <h1>Konsum von "<%= @participant.name %>"</h1>
 
-<ul>
+<ul class="classic-ul">
   <% @consumptions.each do |consumption| %>
     <li>
       <%= consumption.created_at.iso8601 %>
