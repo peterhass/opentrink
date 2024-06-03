@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_28_213533) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_02_112125) do
   create_table "consumptions", force: :cascade do |t|
     t.integer "count"
     t.integer "participant_id", null: false

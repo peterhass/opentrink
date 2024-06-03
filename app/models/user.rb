@@ -10,6 +10,12 @@ class User < ApplicationRecord
   delegate :bar?, to: :invitation
   delegate :admin?, to: :invitation
 
+  scope :newest_first, -> { order(created_at: :desc) }
+
+  def activated?
+    !deactivated?
+  end
+
   private
 
   def set_password

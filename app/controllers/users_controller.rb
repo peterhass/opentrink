@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: :update
+
   def new
     @user = invitation.users.build
   end
@@ -14,6 +16,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user.update!(user_params)
+    redirect_to(invitations_path)
+  end
+
+
   def destroy
     logout
     redirect_to root_url, notice: "Logged out"
@@ -22,10 +30,14 @@ class UsersController < ApplicationController
   private
 
   def invitation
-    @invitation = Invitation.find_by(id: params[:invitation_id])
+    @invitation ||= Invitation.find_by(id: params[:invitation_id])
+  end
+
+  def user
+    @user ||= invitation.users.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :deactivated)
   end
 end

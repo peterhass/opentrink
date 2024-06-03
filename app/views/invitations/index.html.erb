@@ -8,15 +8,22 @@ Neue <%= link_to 'Bar-Einladung erstellen', invitations_path(invitation: { role:
       <%= "Admin-Link" if invitation.admin? %>
       <%= "Bar-Link" if invitation.bar? %>
       
-      #<%= index + 1 %> (<%= link_to 'QR Code', RQRCode::QRCode.new(new_invitation_user_url(invitation)).as_png(size: 500).to_data_url %>) 
+      #<%= @invitations.length - (index + 1) %> <%= link_to '(QR Code)', RQRCode::QRCode.new(new_invitation_user_url(invitation)).as_png(size: 500).to_data_url if invitation.activated? %> 
       <% if invitation.activated? %>
         <%= link_to "(deaktivieren)", invitation_path(invitation.id, invitation: { deactivated: true }), data: { turbo_method: 'put' } %>
       <% else %>
-        [deaktiviert]
+        <%= link_to "(aktivieren)", invitation_path(invitation.id, invitation: { deactivated: false }), data: { turbo_method: 'put' } %>
       <% end %>
      <ul>
-      <% invitation.users.each do |user| %>
-        <li><%= user.name %> #<%= user.id %></li>
+      <% invitation.users.newest_first.each do |user| %>
+        <li>
+          <%= user.name %> #<%= user.id %>
+          <% if user.activated? %>
+            <%= link_to "(deaktivieren)", invitation_user_path(invitation.id, user.id, user: { deactivated: true }), data: { turbo_method: 'put', turbo_track: 'reload' } %>
+          <% else %>
+            [deaktiviert]
+          <% end %>
+        </li>
       <% end %>
      </ul>
     </li>
