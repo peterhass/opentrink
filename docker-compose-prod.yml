@@ -1,0 +1,12 @@
+version: "3.9"
+name: opentrink
+services:
+  app:
+    image: pins2.home:5000/opentrink-app
+    build: .
+    volumes:
+      - storage:/rails/storage
+    ports:
+      - "3000:3000"
+volumes:
+  storage:
