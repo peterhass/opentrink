@@ -95,4 +95,7 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # We are really sure to use sqlite in prod
+  config.active_record.sqlite3_production_warning = true
 end
