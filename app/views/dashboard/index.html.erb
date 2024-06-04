@@ -1,27 +1,39 @@
-<h1>Gewinnspiel App</h1>
-<% if current_user %>
+<div class="flex flex-col gap-2">
   <p>
-  Du bist <%= current_user.name %> 
-  <%= "(Admin)" if current_user.admin? %>
-  <%= "(Bar)" if current_user.bar? %>
-  <%= link_to 'Logout', user_path(current_user), data: { turbo_method: :delete } %>
+    Jeder startet mit einem 
+    vollen Glas, trinkt alle 5 Minuten 
+    einen Schluck und versucht dann 
+    innerhalb der Zeitrahmen eine Shot zu 
+    Ende zu bringen. Punkt für jeden 
+    erfolgreich abgeschlossenen Schuss! Der
+    Gewinner ist die Person mit den meisten
+    Punkten nach 2 Stunden.
+    Sicherheitsmaßnahmen: Wasser-Brecher 
+    und zugelassene Fahrer. (Beispieltext)
   </p>
-<% end %>
-<% if current_participant %>
-  <p>
-  Hallo <%= current_participant.name %>, du nimmst am Gewinnspiel teil! <%= link_to 'Teilnahme-QR-Code', participant_path(current_participant.uid) %>
-  </p>
-<% end %>
-<ul class="classic-ul">
-  <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
-  <li>
-    <%= link_to 'Teilnehmer-Registration', new_participant_path %>
-  </li>
-  <li>
-    <%= link_to 'Einladungen', invitations_path %>
-  </li>
-</ul>
-<h2>Teilnehmer Registration</h2>
-<p>Entweder via Direktlink: <%= link_to 'Teilnehmer-Registration', new_participant_path %>
-</p>
-<p>Oder via QR code: <%= image_tag RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url %> </p>
+  <hr />
+  <% if current_user %>
+    <p class="font-bold">
+    Du bist <%= current_user.name %> 
+    <%= "(Admin)" if current_user.admin? %>
+    <%= "(Bar)" if current_user.bar? %>
+    <%= link_to 'Logout', user_path(current_user), data: { turbo_method: :delete } %>
+    </p>
+    <hr />
+    <ul class="classic-ul">
+      <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
+      <li>
+        <%= link_to 'Benutzerverwaltung', invitations_path if current_user.admin? %>
+      </li>
+      <li>
+        <span class="italic">Öffentliche</span> <%= link_to 'Teilnehmer-Registration', new_participant_path %> <%= link_to '(QR Code)', RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url %> 
+      </li>
+    </ul>
+  <% end %>
+  <% if current_participant %>
+    <hr />
+    <p class="font-bold">
+    Hallo <%= current_participant.name %>, du nimmst am Gewinnspiel teil! <%= link_to 'Teilnahme-QR-Code', participant_path(current_participant.uid) %>
+    </p>
+  <% end %>
+</div>

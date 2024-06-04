@@ -4,7 +4,7 @@
 <ul class="classic-ul">
   <% @participants.each do |participant| %>
     <li>
-      <%= link_to participant.name, participant_path(participant.uid) %>
+      <%= link_to participant.name, participant_consumptions_path(participant.id) %>
       <%= "(#{participant.created_at.to_formatted_s})" %>
     </li>
   <% end %>
