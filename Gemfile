@@ -16,6 +16,7 @@ gem 'rqrcode', '~> 2.0'
 gem 'scenic', '~> 1.8'
 gem 'scenic_sqlite_adapter', '~> 0.1'
 gem 'sorcery'
+gem 'activerecord-session_store', '~> 2.1.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
