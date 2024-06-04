@@ -8,5 +8,6 @@ services:
       - storage:/rails/storage
     ports:
       - "3000:3000"
+    userns_mode: keep-id
 volumes:
   storage:
