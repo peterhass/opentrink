@@ -5,6 +5,9 @@ services:
     image: pins2.home:5000/opentrink-app
     build: .
     volumes:
-      - ./storage:/rails/storage
+      - storage:/rails/storage
     ports:
       - "3000:3000"
+    userns_mode: keep-id
+volumes:
+  storage:
