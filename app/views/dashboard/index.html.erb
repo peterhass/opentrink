@@ -7,6 +7,11 @@
   <%= link_to 'Logout', user_path(current_user), data: { turbo_method: :delete } %>
   </p>
 <% end %>
+<% if current_participant %>
+  <p>
+  Hallo <%= current_participant.name %>, du nimmst am Gewinnspiel teil! <%= link_to 'Teilnahme-QR-Code', participant_path(current_participant.uid) %>
+  </p>
+<% end %>
 <ul class="classic-ul">
   <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
   <li>
