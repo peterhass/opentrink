@@ -6,6 +6,7 @@ RequiresMountsFor=%t/containers
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
+Environment=PORT=6432
 Restart=always
 TimeoutStartSec=60
 TimeoutStopSec=60

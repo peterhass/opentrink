@@ -11,6 +11,8 @@ rake db:setup db:seed # Note printed Invitation ID
 # Visit http://localhost:3000/invitations/<InvitationId>/users/new to login
 ```
 
+# TODO
+- Prod: Include database in backup
 
 # IDEAS / NOTES
 - Let users choose any name and always display them with a unique set of emojis based on their id
