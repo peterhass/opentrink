@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require "opentrink/rack/middleware/force_secure_forwarded"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -108,4 +109,7 @@ Rails.application.configure do
     host: 'pfandl-🍺.🐁🪤.ws',
     protocol: 'https'
   }
+
+  # Fix rack redirects to use https
+  config.middleware.insert_before 0, ::Opentrink::Rack::Middleware::ForceSecureForwarded
 end
