@@ -97,5 +97,9 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   # We are really sure to use sqlite in prod
-  config.active_record.sqlite3_production_warning = true
+  config.active_record.sqlite3_production_warning = false
+
+  # Disable check to support server -> cloudfront -> user setup
+  # https://github.com/nzoschke/edgecors
+  config.action_controller.forgery_protection_origin_check = false
 end
