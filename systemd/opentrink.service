@@ -8,8 +8,6 @@ RequiresMountsFor=%t/containers
 Environment=PODMAN_SYSTEMD_UNIT=%n
 Environment=PORT=6432
 Restart=always
-TimeoutStartSec=60
-TimeoutStopSec=60
 ExecStartPre=/usr/bin/podman-compose pull
 ExecStart=/usr/bin/podman-compose up --remove-orphans
 ExecStop=/usr/bin/podman-compose down

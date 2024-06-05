@@ -102,4 +102,10 @@ Rails.application.configure do
   # Disable check to support server -> cloudfront -> user setup
   # https://github.com/nzoschke/edgecors
   config.action_controller.forgery_protection_origin_check = false
+
+  # Specify edge url to fix _url helpers and redirects
+  routes.default_url_options = {
+    host: 'pfandl-🍺.🐁🪤.ws',
+    protocol: 'https'
+  }
 end
