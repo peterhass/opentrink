@@ -5,6 +5,7 @@ class Invitation < ApplicationRecord
   before_create :set_id
 
   scope :newest_first, -> { order(created_at: :desc) }
+  scope :activated, -> { where(deactivated: false) }
 
   enum :role, { bar: 'bar', admin: 'admin' }
 
