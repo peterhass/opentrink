@@ -1,7 +1,10 @@
-<h1>Login</h1>
-
-<%= form_with model: [@user.invitation, @user], data: { turbo: false } do |form| %>
-  <%= form.label :name, 'Benutzer-Name' %>
-  <%= form.text_field :name %>
-  <%= form.submit label: "Login" %>
+<%= app_form_with model: [@user.invitation, @user], data: { turbo: false } do |form| %>
+  <div class="grid gap-6">
+    <%= form.input_group do %>
+      <%= form.label :name, 'Benutzer-Name' %>
+      <%= form.text_field :name %>
+      <%= form.error_texts :name %>
+    <% end %>
+    <%= form.submit label: "Login" %>
+  </div>
 <% end %>

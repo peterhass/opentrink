@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.3'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
+gem 'rails-i18n'
 gem 'sprockets-rails'
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '>= 5.0'
@@ -24,10 +25,15 @@ group :development, :test do
   gem 'rails_live_reload'
 end
 
+gem 'solargraph', group: %i[ development ]
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
 end
 
-gem "tailwindcss-rails", "~> 2.6"
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+
+gem 'tailwindcss-rails', '~> 2.6'

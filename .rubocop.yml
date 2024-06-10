@@ -1,3 +1,14 @@
+require: rubocop-rails
+
 AllCops: 
-  DisabledByDefault: true
+  NewCops: disable
+
+Bundler/OrderedGems:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Layout/LineLength:
+  Enabled: false
 

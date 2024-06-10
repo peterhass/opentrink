@@ -1,7 +1,12 @@
 <h1>Bier tracken</h1>
 
-<%= form_with model: [@participant, @consumption], data: { turbo: false } do |form| %>
-  <%= form.label :count, 'Anzahl' %>
-  <%= form.text_field :count, type: :number %>
-  <%= form.submit %>
+<%= app_form_with model: [@participant, @consumption], data: { turbo: false } do |form| %>
+  <div class="grid gap-6">
+    <%= form.input_group do %>
+      <%= form.label :count, 'Anzahl' %>
+      <%= form.text_field :count, type: :number %>
+    <% end %>
+
+    <%= form.submit %>
+  </div>
 <% end %>

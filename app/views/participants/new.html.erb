@@ -1,15 +1,14 @@
-<h1>Gewinnspiel</h1>
-
-<% if current_participant %>
-  <p>Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant.uid) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!</p>
+<%= app_form_with model: @participant, data: { turbo: false } do |form| %>
+  <div class="grid gap-6">
+    <% if current_participant %>
+      <p>Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant.uid) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!</p>
+    <% end %>
+    <%= form.input_group do %>
+      <%= form.label :name, "Teilnehmer-Name" %>
+      <%= form.text_field :name %>
+      <%= form.error_texts :name %>
+    <% end %>
+    <%= form.submit "Teilnehmen!" %>
+  </div>
 <% end %>
 
-<%= form_with model: @participant, data: { turbo: false } do |form| %>
-  <%= form.label :name, "Teilnehmer-Name" %>
-  <%= form.text_field :name %>
-  <%= form.submit "Teilnehmen!" %>
-<% end %>
-
-<% @participant.errors.full_messages.each do |message| %>
-  <p><%= message %></p>
-<% end %>
