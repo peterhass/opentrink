@@ -15,6 +15,7 @@ rake db:setup db:seed # Note printed Invitation ID
 - Prod: Include database in backup
 
 # IDEAS / NOTES
+- "Don't roll your own auth"
 - Let users choose any name and always display them with a unique set of emojis based on their id
 - Scoreboard: 
     - Show beer consumption per hour
