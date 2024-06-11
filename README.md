@@ -12,6 +12,7 @@ rake db:setup db:seed # Note printed Invitation ID
 ```
 
 # TODO
+- REGENERATE MASTER KEY, put it in gitignore
 - Prod: Include database in backup
 
 # IDEAS / NOTES
