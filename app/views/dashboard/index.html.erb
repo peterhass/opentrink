@@ -21,6 +21,7 @@
     </p>
     <hr />
     <ul class="classic-ul">
+      <li><%= link_to 'Scoreboard', scoreboard_path %></li>
       <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
       <li>
         <%= link_to 'Benutzerverwaltung', invitations_path if current_user.admin? %>
