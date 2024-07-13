@@ -30,6 +30,10 @@
         <span class="italic">Öffentliche</span> <%= link_to 'Teilnehmer-Registration', new_participant_path %> <%= link_to '(QR Code)', RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url %> 
       </li>
     </ul>
+  <% else %>
+    <ul>
+      <%= link_to 'Teilnehmer-Registration', new_participant_path %> <%= link_to '(QR Code)', RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url %> 
+    </ul>
   <% end %>
   <% if current_participant %>
     <hr />
