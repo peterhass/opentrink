@@ -11,6 +11,17 @@ rake db:setup db:seed # Note printed Invitation ID
 # Visit http://localhost:3000/invitations/<InvitationId>/users/new to login
 ```
 
+# Deploy
+
+```bash
+# on local machine
+podman-compose build && podman-compose push
+
+# on prod machine
+machinectl shell --uid opentrink
+systemctl --user restart opentrink
+```
+
 # TODO
 - REGENERATE MASTER KEY, put it in gitignore
 - Prod: Include database in backup

@@ -13,6 +13,7 @@ ExecStart=/usr/bin/podman-compose up --remove-orphans
 ExecStop=/usr/bin/podman-compose down
 Type=simple
 WorkingDirectory=%h/opentrink
+TimeoutSec=9min
 
 [Install]
 WantedBy=default.target
