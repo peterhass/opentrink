@@ -1,7 +1,7 @@
 <ul class="classic-ul">
   <% @participant_scores.each do |score| %>
     <li>
-      <%= score.participant.name %> <%= score.participant.emoji_id %>: <%= score.total%>
+      <%= render(ParticipantDisplayName.new(score.participant)) %>: <%= score.total%>
     </li>
   <% end %>
 </ul>

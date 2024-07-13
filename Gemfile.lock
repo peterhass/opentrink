@@ -160,6 +160,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
@@ -373,6 +374,10 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.13.0)
     version_gem (1.1.4)
+    view_component (3.12.1)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     webrick (1.8.1)
     websocket (1.2.10)
     websocket-driver (0.7.6)
@@ -415,6 +420,7 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss-rails (~> 2.6)
   turbo-rails
+  view_component
 
 RUBY VERSION
    ruby 3.2.3p157

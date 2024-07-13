@@ -10,6 +10,7 @@ gem 'puma', '>= 5.0'
 gem 'importmap-rails'
 gem 'turbo-rails'
 gem 'stimulus-rails'
+gem 'view_component'
 
 gem 'bootsnap', require: false
 gem 'simple_form', '~> 5.3.0'
