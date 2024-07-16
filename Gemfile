@@ -11,6 +11,7 @@ gem 'importmap-rails'
 gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'view_component'
+gem 'redcarpet'
 
 gem 'bootsnap', require: false
 gem 'simple_form', '~> 5.3.0'

@@ -1,16 +1,23 @@
 <div class="flex flex-col gap-2">
-  <p>
-    Jeder startet mit einem 
-    vollen Glas, trinkt alle 5 Minuten 
-    einen Schluck und versucht dann 
-    innerhalb der Zeitrahmen eine Shot zu 
-    Ende zu bringen. Punkt für jeden 
-    erfolgreich abgeschlossenen Schuss! Der
-    Gewinner ist die Person mit den meisten
-    Punkten nach 2 Stunden.
-    Sicherheitsmaßnahmen: Wasser-Brecher 
-    und zugelassene Fahrer. (Beispieltext)
-  </p>
+  <%= mark do %>
+    Hallo Leute, wir sind von der [Fleischerei Konrad Pfandl](https://www.fleischerei-pfandl.at/), Unterer [Platz 3, 9300 St.Veit](https://maps.app.goo.gl/HvCDXEWQETKKCpfL8).
+
+    Wir betreiben am Wiesenmarkt von St.Veit, von **20.09. bis 07.10.**, eine kulinarische Hütte.
+    
+    Heuer erstmalig _NEU_ für euch. Für unsere geschätzten Bierliebhaber. Ein QR-Code Gewinnspiel.
+
+    Das Gewinnspiel startet **Montag den 30.09.** und endet somit am **Freitag den 04.10.** bei Sperrstunde.
+      
+    Siegerehrung beginnt **Sonntag den 06.10** _pünktlich_ um **18 Uhr**. Preise werden nur ausgegeben mit richtigen QR-Code und persönlicher Anwesenheit.
+
+    ## Ablauf
+   
+    * jedes Bier 0,5l muss bei Kellner oder Theke eingescannt werden mit eurer Registrierung
+    * in der Hütte gibt es eine Leinwand, die besten 5, die am meisten Bier bestellt haben, werden auf der Wand angezeigt
+    * Für die ersten 3 Plätze gibt es natürlich besondere Preise
+
+    ….also mitmachen , Bier bestellen und Gewinnen
+  <% end %>
   <hr />
   <% if current_user %>
     <p class="font-bold">

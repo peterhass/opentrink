@@ -25,6 +25,7 @@ systemctl --user restart opentrink
 # TODO
 - REGENERATE MASTER KEY, put it in gitignore
 - Prod: Include database in backup
+- Need some functionality to verify a user on the scoreboard 
 
 # IDEAS / NOTES
 - "Don't roll your own auth"
