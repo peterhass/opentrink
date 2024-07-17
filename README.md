@@ -26,6 +26,7 @@ systemctl --user restart opentrink
 - REGENERATE MASTER KEY, put it in gitignore
 - Prod: Include database in backup
 - Need some functionality to verify a user on the scoreboard 
+- Put some kind of ttl on user consumption links to prevent people from using other participants QR codes
 
 # IDEAS / NOTES
 - "Don't roll your own auth"
