@@ -53,7 +53,55 @@ CREATE INDEX "index_users_on_invitation_id" ON "users" ("invitation_id");
 CREATE TABLE IF NOT EXISTS "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" varchar NOT NULL, "data" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_sessions_on_session_id" ON "sessions" ("session_id");
 CREATE INDEX "index_sessions_on_updated_at" ON "sessions" ("updated_at");
+CREATE VIEW "scoreboards" AS -- TODO: come up with a real solution to detect changes in scoreboard (currently done via hash/version)
+SELECT * 
+FROM participant_scores
+LEFT JOIN (
+	SELECT group_concat(hash, '-') as version
+	FROM (
+		SELECT concat(
+ 			'id:' || id,
+ 			',total:' || total,
+ 			',last_hour:' || last_hour, 
+ 			',last_two_hours:' || last_two_hours, 
+ 			',last_three_hours:' || last_three_hours, 
+ 			',total_rank' || total_rank, 
+ 			',last_hour_rank' || last_hour_rank, 
+ 			',last_two_hours_rank' || last_two_hours_rank, 
+ 			',last_three_hours_rank' || last_three_hours_rank) AS hash
+ 		FROM participant_scores
+ 	)
+ )
+ ON id is not null
+ WHERE total_rank is not null
+ ORDER BY total_rank asc
+/* scoreboards(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,version) */;
+CREATE VIEW "scores" AS -- TODO: come up with a real solution to detect changes in scoreboard (currently done via hash/board_id)
+SELECT * 
+FROM participant_scores
+LEFT JOIN (
+	SELECT group_concat(hash, '-') as board_id
+	FROM (
+		SELECT concat(
+ 			'id:' || id,
+ 			',total:' || total,
+ 			',last_hour:' || last_hour, 
+ 			',last_two_hours:' || last_two_hours, 
+ 			',last_three_hours:' || last_three_hours, 
+ 			',total_rank' || total_rank, 
+ 			',last_hour_rank' || last_hour_rank, 
+ 			',last_two_hours_rank' || last_two_hours_rank, 
+ 			',last_three_hours_rank' || last_three_hours_rank) AS hash
+ 		FROM participant_scores
+ 	)
+ )
+ ON id is not null
+ WHERE total_rank is not null
+ ORDER BY total_rank asc
+/* scores(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,board_id) */;
 INSERT INTO "schema_migrations" (version) VALUES
+('20240717111159'),
+('20240717110330'),
 ('20240604111701'),
 ('20240602112125'),
 ('20240528213533'),

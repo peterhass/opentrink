@@ -1,5 +1,5 @@
 class ScoreboardsController < ApplicationController
-  def show 
-    @participant_scores = ParticipantScore.total_ranked
+  def show
+    @scoreboard = Score.fetch_scoreboard
   end
 end

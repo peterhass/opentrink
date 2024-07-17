@@ -1,5 +1,5 @@
 <ul class="classic-ul">
-  <% @participant_scores.each do |score| %>
+  <% @scoreboard.participant_scores.each do |score| %>
     <li>
       <%= render(ParticipantDisplayName.new(score.participant)) %>: <%= score.total%>
     </li>
