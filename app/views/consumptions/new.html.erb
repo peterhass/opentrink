@@ -1,4 +1,5 @@
 <h1>Bier tracken</h1>
+<p>Für <%= render ParticipantDisplayName.new(@participant) %></p>
 
 <%= app_form_with model: [@participant, @consumption], data: { turbo: false } do |form| %>
   <div class="grid gap-6">
