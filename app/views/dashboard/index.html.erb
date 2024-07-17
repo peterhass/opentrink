@@ -45,7 +45,7 @@
   <% if current_participant %>
     <hr />
     <p class="font-bold">
-    Hallo <%= render(ParticipantDisplayName.new(current_participant)) %>, du nimmst am Gewinnspiel teil! <%= link_to 'Teilnahme-QR-Code', participant_path(current_participant.uid) %>
+    Hallo <%= render(ParticipantDisplayName.new(current_participant)) %>, du nimmst am Gewinnspiel teil! <%= link_to 'Teilnahme-QR-Code', participant_path(current_participant) %>
     </p>
   <% end %>
 </div>

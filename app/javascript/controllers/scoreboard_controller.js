@@ -3,10 +3,16 @@ import consumer from '../channels/consumer'
 
 export default class ScoreboardController extends Controller {
   connect() {
-		consumer.subscriptions.create('ScoreboardChannel', {
-			received(data) {
+		this.subscription = consumer.subscriptions.create('ScoreboardChannel', {
+			received() {
 				window.location.reload()
 			}
 		});
   }
+
+	disconnect() {
+		if (!this.subscription) return;
+
+		consumer.subscriptions.remove(this.subscription)
+	}
 }

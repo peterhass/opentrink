@@ -6,7 +6,6 @@ FOREIGN KEY ("participant_id")
   REFERENCES "participants" ("id")
 );
 CREATE INDEX "index_consumptions_on_participant_id" ON "consumptions" ("participant_id");
-CREATE TABLE IF NOT EXISTS "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "uid" varchar);
 CREATE VIEW "participant_scores" AS SELECT *,
 	
 	CASE WHEN total IS NOT NULL
@@ -102,7 +101,9 @@ LEFT JOIN (
  ORDER BY total_rank asc
  LIMIT 5
 /* scores(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,board_id) */;
+CREATE TABLE IF NOT EXISTS "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "uid" varchar DEFAULT NULL);
 INSERT INTO "schema_migrations" (version) VALUES
+('20240717170127'),
 ('20240717160232'),
 ('20240717111159'),
 ('20240717110330'),

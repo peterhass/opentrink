@@ -1,7 +1,7 @@
 <%= app_form_with model: @participant, data: { turbo: false } do |form| %>
   <div class="grid gap-6">
     <% if current_participant %>
-      <p>Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant.uid) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!</p>
+      <p>Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!</p>
     <% end %>
     <%= form.input_group do %>
       <%= form.label :name, "Teilnehmer-Name" %>

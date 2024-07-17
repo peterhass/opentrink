@@ -3,10 +3,6 @@ class Participant < ApplicationRecord
 
   has_many :consumptions
 
-  before_validation on: :create do
-    self.uid = SecureRandom.uuid if self.uid.blank?
-  end
-
   scope :newest_first, -> { order(created_at: :desc) }
 
   def emoji_id
