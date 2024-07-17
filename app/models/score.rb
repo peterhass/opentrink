@@ -9,6 +9,10 @@ class Score < ApplicationRecord
     )
   end
 
+  def self.fetch_scoreboard_id
+    Score.first&.board_id
+  end
+
   def participant_score
     becomes(ParticipantScore)
   end

@@ -13,7 +13,7 @@ class ConsumptionsController < ApplicationController
   def create
     @consumption = participant.consumptions.new(params.require(:consumption).permit(:count))
 
-    if @consumption.save
+    if save_consumption_and_update_scoreboard(@consumption)
       redirect_to action: :index
     else
       render :new, status: :unprocessable_entity
@@ -21,7 +21,26 @@ class ConsumptionsController < ApplicationController
   end
 
   private
+
   def participant
     @participant ||= Participant.find(params[:participant_id])
+  end
+
+  def save_consumption_and_update_scoreboard(consumption)
+    saved = false
+    did_scoreboard_change = false
+
+    @consumption.transaction do
+      current_scoreboard_id = Score.fetch_scoreboard_id
+
+      saved = consumption.save
+      return unless saved
+
+      did_scoreboard_change = current_scoreboard_id != Score.fetch_scoreboard_id
+    end
+
+    ActionCable.server.broadcast('scoreboard', :updated) if did_scoreboard_change
+
+    saved
   end
 end

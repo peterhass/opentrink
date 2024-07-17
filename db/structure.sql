@@ -76,8 +76,7 @@ LEFT JOIN (
  WHERE total_rank is not null
  ORDER BY total_rank asc
 /* scoreboards(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,version) */;
-CREATE VIEW "scores" AS -- TODO: come up with a real solution to detect changes in scoreboard (currently done via hash/board_id)
-SELECT * 
+CREATE VIEW "scores" AS SELECT * 
 FROM participant_scores
 LEFT JOIN (
 	SELECT group_concat(hash, '-') as board_id
@@ -93,13 +92,18 @@ LEFT JOIN (
  			',last_two_hours_rank' || last_two_hours_rank, 
  			',last_three_hours_rank' || last_three_hours_rank) AS hash
  		FROM participant_scores
+		WHERE total_rank is not null
+		ORDER BY total_rank asc
+		LIMIT 5
  	)
  )
  ON id is not null
  WHERE total_rank is not null
  ORDER BY total_rank asc
+ LIMIT 5
 /* scores(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,board_id) */;
 INSERT INTO "schema_migrations" (version) VALUES
+('20240717160232'),
 ('20240717111159'),
 ('20240717110330'),
 ('20240604111701'),

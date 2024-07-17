@@ -1,7 +1,9 @@
-<ul class="classic-ul">
-  <% @scoreboard.participant_scores.each do |score| %>
-    <li>
-      <%= render(ParticipantDisplayName.new(score.participant)) %>: <%= score.total%>
-    </li>
-  <% end %>
-</ul>
+<div data-controller="scoreboard">
+  <ul class="classic-ul">
+    <% @scoreboard.participant_scores.each do |score| %>
+      <li>
+        <%= render(ParticipantDisplayName.new(score.participant)) %>: <%= score.total%>
+      </li>
+    <% end %>
+  </ul>
+</div>
