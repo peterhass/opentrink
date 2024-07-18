@@ -13,6 +13,13 @@
 */
 
 @layer base {
+	/*
+	@font-face {
+		font-family: 'Anton';
+		src: font-url('Anton-Regular.ttf') format('truetype');
+	}
+	*/
+
 	a:not(a.unstyled) {
 		@apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
 	}

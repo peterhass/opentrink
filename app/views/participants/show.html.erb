@@ -3,11 +3,14 @@
   data-refresh-interval-value="<%= 5.minutes.to_i %>"
 ></div>
 
-<p>Du nimmst jetzt teil, <%= render(ParticipantDisplayName.new(@participant)) %></p>
+<div class="flex flex-col gap-2">
+  <p>Du nimmst jetzt teil, <%= render(ParticipantDisplayName.new(@participant)) %></p>
+  <p>Lass diesen QR-Code <strong>bei einem Kellner oder an der Theke einscannen</strong> damit deine 🍺 Bier-Bestellung gezählt werden kann.</p>
+</div>
 
-<div class="flex max-w-prose mt-6">
+<div class="grid mt-6">
   <%= RQRCode::QRCode.new(new_participant_consumption_url(@participant.signed_id(expires_in: 30.minutes))).as_svg(viewbox: true).html_safe %>
 </div>
 
-<%= link_to('track consumption', new_participant_consumption_url(@participant.signed_id(expires_in: 30.minutes))) if Rails.env.development? %>
+<%= link_to('track consumption', new_participant_consumption_url(@participant.signed_id(expires_in: 30.minutes))) if false && Rails.env.development? %>
 
