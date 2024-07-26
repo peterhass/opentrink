@@ -1,6 +1,6 @@
 # TODOs
 
-- Create some general use view components
+- [DONE] Create some general use view components
 - REGENERATE MASTER KEY, put it in gitignore
 - Need some functionality to verify a user on the scoreboard 
 - Prod: Include database in backup

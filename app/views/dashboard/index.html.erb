@@ -3,7 +3,7 @@
     <p class="font-bold">
     Hallo <%= render(ParticipantDisplayName.new(current_participant)) %>, du nimmst am Gewinnspiel teil! 
     </p>
-    <%= link_to 'Jetzt Bier scannen', participant_path(current_participant), class: "unstyled text-white bg-blue-700 hover:bg-blue-800 text-center focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    <%= link_to 'Jetzt Bier scannen', participant_path(current_participant), class: primary_button_class %>
     <hr />
   <% end %>
   <%= mark do %>
@@ -45,6 +45,6 @@
       </li>
     </ul>
   <% else %>
-    <%= link_to 'Jetzt mitmachen', new_participant_path, class: "unstyled text-white bg-blue-700 hover:bg-blue-800 text-center focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    <%= link_to 'Jetzt mitmachen', new_participant_path, class: primary_button_class %>
   <% end %>
 </div>
