@@ -41,4 +41,23 @@
   <% else %>
     <%= link_to 'Jetzt mitmachen', new_participant_path, class: primary_button_class %>
   <% end %>
+  <%= mark do %>
+    ## Hilfe
+
+    ### Sicherheit
+
+    * Grundsatz: Hinter dem QR-Code versteckt sich ein einfacher Link. **Jeder kann QR-Codes generieren.** Ein potentieller Angreifer könnte die Gewinnspiel-App optisch nachbauen. ([Phishing](https://de.wikipedia.org/wiki/Phishing))
+    * Grundsatz: Die App wird **nie** nach einer Username+Passwort-Kombination (oder sonstigen personenbezogenen Daten) fragen. Kannst du die 'Bier tracken'-Seite nach einem Scan nicht erreichen, dann scanne nochmal den Bar-Einladungs-QR-Code an der Bar um dich zu authentifizieren und scanne nochmal den QR-Code des Teilnehmers.
+    * Die Einladungs-QR-Codes dürfen nur für Mitarbeiter erreichbar sein. Sollten Zweifel auftreten dass jemand anders Zugriff hatte, muss dieser Link in der [Benutzerverwaltung](<%= invitations_path %>) (nur mit Administrator-Zugang) deaktiviert werden.
+    * Nach jedem Scan einen kurzen Blick in die Browser-Adressleiste werfen und vergleichen: <%= root_url %>
+
+    ### Gewinnspiel auflösen
+
+    * Scoreboard aufrufen
+    * Spieler+Emoji ausrufen
+    * QR-Code des Spielers scannen um die 'Bier tracken'-Seite aufzurufen
+    * **Browser-Adressleiste kontrollieren**: <%= root_url %>
+    * Spielername **UND** Emoji vergleichen; nur gemeinsam kann mit Sicherheit festgestellt werden ob es sich um die Richtige Person handelt
+    * Preis ausgeben
+  <% end if current_user %>
 </div>
