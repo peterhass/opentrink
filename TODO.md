@@ -5,9 +5,10 @@
 - [DONE] Need some functionality to verify a user on the scoreboard 
 - Prod: Include database in backup
 - Impress Page
-- Data Privacy Page
-- New participant page: Add description of contest
-- New participant page: Add explaination of how data is handeled and link to privacy page
+- [DONE] Data Privacy Page
+- Ask Konny to provide a proper privacy page
+- [DONE] New participant page: Add description of contest
+- [DONE] New participant page: Add explaination of how data is handeled and link to privacy page
 - Change scoreboard design to fit on a big projector screen
 - Change Invitations to use signed_id instead of uid's to allow setting of ttl's
 - Make design less horrible
@@ -16,6 +17,7 @@
 - Change dashboard links to buttons (to make them usable on mobile)
 - Test: Participants stay logged in for at least three weeks
 - Idea: Give participants the ability to 'move devices'
+- Allow admin/bar users to hide participants (eg. if their names don't fit the etiquette)
 
 # Ideas
 - Scoreboard: 

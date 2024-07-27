@@ -1,5 +1,25 @@
 <%= app_form_with model: @participant, data: { turbo: false } do |form| %>
   <div class="grid gap-6">
+    <%= mark do %>
+      Hallo Leute, wir sind von der [Fleischerei Konrad Pfandl](https://www.fleischerei-pfandl.at/), Unterer [Platz 3, 9300 St.Veit](https://maps.app.goo.gl/HvCDXEWQETKKCpfL8).
+
+      Wir betreiben am Wiesenmarkt von St.Veit, von **20.09. bis 07.10.**, eine kulinarische Hütte.
+      
+      Heuer erstmalig _NEU_ für euch. Für unsere geschätzten Bierliebhaber. Ein QR-Code Gewinnspiel.
+
+      Das Gewinnspiel startet **Montag den 30.09.** und endet somit am **Freitag den 04.10.** bei Sperrstunde.
+        
+      Siegerehrung beginnt **Sonntag den 06.10** _pünktlich_ um **18 Uhr**. Preise werden nur ausgegeben mit richtigen QR-Code und persönlicher Anwesenheit.
+
+      ## Ablauf
+     
+      * du registrierst dich hier mit deinem Smartphone und einem Namen deiner Wahl, welchen wir auf der Leinwand zeigen (_bitte beachte dass der Name der Etikette entspricht, ansonsten sind wir gezwungen dich vom Gewinnspiel zu entfernen_)
+      * jedes Bier 0,5l muss bei Kellner oder Theke eingescannt werden mit eurer Registrierung (<%= link_to 'Gewinnspiel', root_path %> -> 'Jetzt Bier scannen')
+      * in der Hütte gibt es eine Leinwand, die besten 5, die am meisten Bier bestellt haben, werden auf der Wand angezeigt
+      * Für die ersten 3 Plätze gibt es natürlich besondere Preise
+
+      ….also mitmachen , Bier bestellen und Gewinnen
+    <% end %>
     <% if current_participant %>
       <p>Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!</p>
     <% end %>
@@ -9,6 +29,11 @@
       <%= form.error_texts :name %>
     <% end %>
     <%= form.submit "Teilnehmen!" %>
+    <%= mark do %>
+      ## Datenschutz
+
+      Wir speichern ausschließlich den von dir ausgewählten Namen, sowie den Zeitpunkt und Menge der von dir bestellten Biere (sofern du deinen Registrations-QR-Code vorzeigst). Sofern du unter den besten 5 bist, zeigen wir deinen Namen und die Anzahl der von dir bestellten Biere öffentlich auf einer Leinwand. Es steht dir frei einen beliebigen Namen zu wählen (dein voller Vor- und Nachname ist somit nicht für die Teilnahme notwendig). Die gesammelten Daten werden unmittelbar nach der Siegerehrung gelöscht. <%= link_to 'Mehr Informationen', static_pages_privacy_path %>
+    <% end %>
   </div>
 <% end %>
 
