@@ -1,31 +1,38 @@
-class ParticipantDisplayName < ViewComponent::Base
+class UserDisplayName < ViewComponent::Base
   erb_template <<~ERB
     <span class="<%= classes %>">
-      <%= participant.name %> <%= participant.emoji_id %>
+      <%= text %>
     </span>
   ERB
 
-  def initialize(participant)
-    @participant = participant
+  def initialize(user)
+    @user = user
     super
   end
 
   private
 
-  attr_reader :participant
+  attr_reader :user
+
+  def text
+    return "#{user.name} (Admin)" if user.admin?
+    return "#{user.name} (Bar)" if user.bar?
+
+    user.name
+  end
 
   def classes
     Opentrink::Clsx.call(%w[inline-flex
                             item-baseline
                             rounded-md
-                            bg-purple-50
                             px-2
                             py-1
                             text-md
                             font-medium
-                            text-purple-800
                             ring-1
                             ring-inset
-                            ring-gray-500/10])
+                            ring-gray-500/10],
+                         %w[bg-red-50 text-red-800] => user.admin?,
+                         %w[bg-purple-50 text-purple-800] => user.bar?)
   end
 end

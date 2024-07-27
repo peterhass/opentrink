@@ -28,22 +28,16 @@
   <hr />
   <% if current_user %>
     <p class="font-bold">
-    Du bist <%= current_user.name %> 
-    <%= "(Admin)" if current_user.admin? %>
-    <%= "(Bar)" if current_user.bar? %>
-    <%= link_to 'Logout', user_path(current_user), data: { turbo_method: :delete } %>
+      Du bist     <%= render UserDisplayName.new(current_user) %>
+      <%= link_to 'Logout', user_path(current_user), data: { turbo_method: :delete } %>
     </p>
-    <hr />
-    <ul class="classic-ul">
-      <li><%= link_to 'Scoreboard', scoreboard_path %></li>
-      <li><%= link_to 'Teilnehmer-Liste', participants_path %></li>
-      <li>
-        <%= link_to 'Benutzerverwaltung', invitations_path if current_user.admin? %>
-      </li>
-      <li>
-        <span class="italic">Öffentliche</span> <%= link_to 'Teilnehmer-Registration', new_participant_path %> <%= link_to '(QR Code)', RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url %> 
-      </li>
-    </ul>
+    <div class="grid grid-cols-2">
+      <%= link_to 'Scoreboard', scoreboard_path, class: alternative_button_class %>
+      <%= link_to 'Teilnehmer-Liste', participants_path, class: alternative_button_class  %>
+      <%= link_to 'Benutzerverwaltung', invitations_path, class: alternative_button_class  if current_user.admin? %>
+      <%= link_to 'Teilnehmer-Registration', new_participant_path, class: alternative_button_class %> 
+      <%= link_to 'Teilnehmer-Registration (QR Code)', RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url, class: alternative_button_class  %>
+    </div>
   <% else %>
     <%= link_to 'Jetzt mitmachen', new_participant_path, class: primary_button_class %>
   <% end %>
