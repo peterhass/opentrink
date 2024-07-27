@@ -18,8 +18,14 @@ module MarkdownHelper
     # https://github.com/vmg/redcarpet?tab=readme-ov-file#block-level-calls
 
     def header(text, header_level)
-      # TODO: support multiple header levels
-      "<h#{header_level} class='font-bold text-lg'>#{text}</h#{header_level}>"
+      puts header_level.inspect
+      classes = case header_level
+                when 1, 2
+                  'text-lg'
+                when 3
+                  'text-base'
+                end
+      "<h#{header_level} class='#{Opentrink::Clsx.call(%w[font-bold], classes)}'>#{text}</h#{header_level}>"
     end
 
     def list(contents, list_type)
