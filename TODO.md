@@ -19,6 +19,7 @@
 - Idea: Give participants the ability to 'move devices'
 - Allow admin/bar users to hide participants (eg. if their names don't fit the etiquette)
 - Add truncation to ParticipantDisplayName
+- Free crash reporting
 
 # Ideas
 - Scoreboard: 
