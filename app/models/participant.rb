@@ -5,6 +5,10 @@ class Participant < ApplicationRecord
 
   scope :newest_first, -> { order(created_at: :desc) }
 
+  def activated?
+    !deactivated?
+  end
+
   def emoji_id
     list = []
     remaining = id

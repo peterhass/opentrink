@@ -38,7 +38,7 @@ FROM (
 		FROM "participants" LEFT OUTER JOIN "consumptions" ON "consumptions"."participant_id" = "participants"."id" 
 		GROUP BY "participants"."id"
 )
-/* participant_scores(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank) */;
+/* participant_scores(id,name,created_at,updated_at,uid,deactivated,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank) */;
 CREATE TABLE IF NOT EXISTS "invitations" ("id" uuid NOT NULL PRIMARY KEY, "deactivated" boolean DEFAULT 0, "created_by_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "role" varchar DEFAULT 'bar' NOT NULL, CONSTRAINT "fk_rails_1e69da856c"
 FOREIGN KEY ("created_by_id")
   REFERENCES "users" ("id")
@@ -74,7 +74,7 @@ LEFT JOIN (
  ON id is not null
  WHERE total_rank is not null
  ORDER BY total_rank asc
-/* scoreboards(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,version) */;
+/* scoreboards(id,name,created_at,updated_at,uid,deactivated,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,version) */;
 CREATE VIEW "scores" AS SELECT * 
 FROM participant_scores
 LEFT JOIN (
@@ -100,9 +100,10 @@ LEFT JOIN (
  WHERE total_rank is not null
  ORDER BY total_rank asc
  LIMIT 5
-/* scores(id,name,created_at,updated_at,uid,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,board_id) */;
-CREATE TABLE IF NOT EXISTS "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "uid" varchar DEFAULT NULL);
+/* scores(id,name,created_at,updated_at,uid,deactivated,total,last_hour,last_two_hours,last_three_hours,total_rank,last_hour_rank,last_two_hours_rank,last_three_hours_rank,board_id) */;
+CREATE TABLE IF NOT EXISTS "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "uid" varchar DEFAULT NULL, "deactivated" boolean DEFAULT 0);
 INSERT INTO "schema_migrations" (version) VALUES
+('20240729205515'),
 ('20240717170127'),
 ('20240717160232'),
 ('20240717111159'),

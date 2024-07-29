@@ -6,8 +6,10 @@
     <%= form.input_group do %>
       <%= form.label :count, 'Anzahl' %>
       <%= form.text_field :count, type: :number %>
+      <%= form.error_texts :count %>
     <% end %>
 
+    <%= form.error_texts :base %>
     <%= form.submit %>
   </div>
 <% end %>

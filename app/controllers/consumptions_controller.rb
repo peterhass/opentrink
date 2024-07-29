@@ -47,7 +47,7 @@ class ConsumptionsController < ApplicationController
     saved = false
     did_scoreboard_change = false
 
-    @consumption.transaction do
+    consumption.transaction do
       current_scoreboard_id = Score.fetch_scoreboard_id
 
       saved = consumption.save

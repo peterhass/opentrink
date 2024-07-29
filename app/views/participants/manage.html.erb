@@ -1,9 +1,32 @@
-<div class="grid gap-3">
+<div class="grid gap-8 space-y space-y-3">
   <div class="flex flex-row justify-between align-center">
     <h1 class="text-3xl font-bold">Teilnehmer</h1>
       <%= link_to 'Konsum', participant_consumptions_path(@participant), class: alternative_button_class %>
   </div>
-  <span><%= render ParticipantDisplayName.new(@participant) %></span>
 
-  <span>Registriert: <%= l @participant.created_at, format: :short %></span>
+  <div class="flex flex-col gap-3">
+    <span><%= render ParticipantDisplayName.new(@participant) %></span>
+    <span>Registriert: <%= l @participant.created_at, format: :short %></span>
+    <span>Zuletzt geändert: <%= l @participant.updated_at, format: :short %></span>
+  </div>
+
+  <% if @participant.deactivated? %>
+    <div class="bg-red-100 p-3 flex flex-col gap-3">
+      <span>Dieser Teilnehmer wurde <strong>deaktiviert</strong>. Somit taucht er nicht mehr am Scoreboard auf und kann keine neuen Konsumationen erstellen lassen.</span>
+      <%= link_to "Aktivieren",
+        participant_path(@participant.id,
+                         participant: { deactivated: false }), 
+        class: primary_button_class,
+        data: { turbo_method: 'put', turbo_track: 'reload' } %>
+    </div>
+  <% else %>
+    <div class="bg-orange-100 p-3 flex flex-col gap-3">
+      <span>Teilnehmer deaktivieren um ihn vom Scoreboard auszublenden und davor zu hindern neue Konsumationen erstellen zu lassen. (Teilnehmer wird auf seiner 'Jetzt Bier scannen'-Page über diesen Status informiert.)</span>
+      <%= link_to "Deaktivieren",
+        participant_path(@participant.id,
+                         participant: { deactivated: true }), 
+        class: primary_button_class,
+        data: { turbo_method: 'put', turbo_track: 'reload' } %>
+    </div>
+  <% end %>
 </div>

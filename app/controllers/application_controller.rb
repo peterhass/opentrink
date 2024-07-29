@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     @current_participant ||= Participant.find_by(id: session[:participant_id])
   end
 
+  def can_participate?
+    current_participant&.activated?
+  end
+
   def can_admin?
     current_user&.activated? && current_user&.admin?
   end

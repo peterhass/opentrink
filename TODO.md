@@ -1,5 +1,6 @@
 # TODOs
 
+- REMOVE DEACTIVATED USERS FROM SCOREBOARDS
 - [DONE] Create some general use view components
 - REGENERATE MASTER KEY, put it in gitignore
 - [DONE] Need some functionality to verify a user on the scoreboard 
@@ -20,6 +21,7 @@
 - Allow admin/bar users to hide participants (eg. if their names don't fit the etiquette)
 - Add truncation to ParticipantDisplayName
 - Free crash reporting
+- Add validation to check for presence of count in Consumptions
 
 # Ideas
 - Scoreboard: 

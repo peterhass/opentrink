@@ -19,6 +19,13 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new
   end
 
+  def update
+    participant = Participant.find_by!(id: params[:id])
+
+    participant.update!(params.require(:participant).permit(:deactivated))
+    redirect_to action: :manage
+  end
+
   def create
     @participant = Participant.new(params.require(:participant).permit(:name))
 
