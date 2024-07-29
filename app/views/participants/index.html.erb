@@ -1,12 +1,16 @@
-<h1>Teilnehmer</h1>
-<p>
-  Anzahl der Teilnehmer: <%= @participants.count %>
-</p>
-<ul class="classic-ul">
-  <% @participants.each do |participant| %>
-    <li>
-      <%= link_to participant.name, participant_consumptions_path(participant.id) %>
-      <%= "(#{participant.created_at.to_formatted_s})" %>
-    </li>
-  <% end %>
-</ul>
+<div class="grid gap-3">
+  <h1 class="text-3xl font-bold">Teilnehmer</h1>
+  <p>
+    Anzahl: <%= @participants.count %>
+  </p>
+  <ul class="flex flex-col gap-5 divide-y divide-gray-200">
+    <% @participants.each do |participant| %>
+      <li class="py-3 flex flex-col">
+        <%= link_to manage_participant_path(participant.id) do %>
+          <%= render ParticipantDisplayName.new(participant) %>
+        <% end %>
+        <span>Registriert: <%= l participant.created_at, format: :short %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

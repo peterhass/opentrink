@@ -1,0 +1,9 @@
+<div class="grid gap-3">
+  <div class="flex flex-row justify-between align-center">
+    <h1 class="text-3xl font-bold">Teilnehmer</h1>
+      <%= link_to 'Konsum', participant_consumptions_path(@participant), class: alternative_button_class %>
+  </div>
+  <span><%= render ParticipantDisplayName.new(@participant) %></span>
+
+  <span>Registriert: <%= l @participant.created_at, format: :short %></span>
+</div>

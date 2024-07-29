@@ -7,7 +7,12 @@ class ParticipantsController < ApplicationController
 
   def show
     @participant = Participant.find_by!(id: params[:id])
+
     raise 'not allowed' unless @participant.id == current_participant&.id
+  end
+
+  def manage
+    @participant = Participant.find_by!(id: params[:id])
   end
 
   def new

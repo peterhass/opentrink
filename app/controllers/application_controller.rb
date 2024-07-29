@@ -13,15 +13,23 @@ class ApplicationController < ActionController::Base
     @current_participant ||= Participant.find_by(id: session[:participant_id])
   end
 
+  def can_admin?
+    current_user&.activated? && current_user&.admin?
+  end
+
   def require_admin
-    return if current_user&.activated? && current_user&.admin?
+    return if can_admin?
 
     # TODO
     not_authenticated
   end
 
+  def can_bar?
+    current_user&.activated? && (current_user&.bar? || current_user&.admin?)
+  end
+
   def require_bar
-    return if current_user&.activated? && (current_user&.bar? || current_user&.admin?)
+    return if can_bar?
 
     # TODO
     not_authenticated

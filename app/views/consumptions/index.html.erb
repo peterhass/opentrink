@@ -1,9 +1,9 @@
-<h1>Konsum von <%= render ParticipantDisplayName.new(@participant) %></h1>
+<h1>Konsum von <%= link_to(manage_participant_path(@participant)) { render ParticipantDisplayName.new(@participant) } %></h1>
 
 <ul class="classic-ul">
   <% @consumptions.each do |consumption| %>
     <li>
-      <%= consumption.created_at.iso8601 %>
+      <%= l consumption.created_at, format: :short %>
       <strong><%= consumption.count %> Stk</strong>
     </li>
   <% end %>

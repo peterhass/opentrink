@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :participants do
     resources :consumptions
+    get 'manage', on: :member
   end
 
   resource :scoreboard
