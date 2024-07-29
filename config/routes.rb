@@ -21,4 +21,5 @@ Rails.application.routes.draw do
 
   get 'static_pages/impress'
   get 'static_pages/privacy'
+  get 'static_pages/about'
 end

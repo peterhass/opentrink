@@ -4,7 +4,7 @@
 - REGENERATE MASTER KEY, put it in gitignore
 - [DONE] Need some functionality to verify a user on the scoreboard 
 - Prod: Include database in backup
-- Impress Page
+- [DONE] Impress Page
 - [DONE] Data Privacy Page
 - Ask Konny to provide a proper privacy page
 - [DONE] New participant page: Add description of contest
