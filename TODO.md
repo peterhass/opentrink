@@ -1,6 +1,6 @@
 # TODOs
 
-- REMOVE DEACTIVATED USERS FROM SCOREBOARDS
+- REMOVE DEACTIVATED USERS FROM SCOREBOARDS (don't forget to notify channel)
 - [DONE] Create some general use view components
 - REGENERATE MASTER KEY, put it in gitignore
 - [DONE] Need some functionality to verify a user on the scoreboard 
