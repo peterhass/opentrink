@@ -1,7 +1,8 @@
 class ParticipantDisplayName < ViewComponent::Base
   erb_template <<~ERB
     <span class="<%= classes %>">
-      <%= participant.name %> <%= participant.emoji_id %>
+      <span class="truncate"><%= participant.name %></span>
+      <span><%= participant.emoji_id %></span>
     </span>
   ERB
 
@@ -15,8 +16,10 @@ class ParticipantDisplayName < ViewComponent::Base
   attr_reader :participant
 
   def classes
-    Opentrink::Clsx.call(%w[inline-flex
+    Opentrink::Clsx.call(%w[inline-grid
+                            grid-cols-[1fr_auto]
                             item-baseline
+                            gap-1
                             rounded-md
                             bg-purple-50
                             px-2

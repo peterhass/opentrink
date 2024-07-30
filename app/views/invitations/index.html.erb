@@ -17,7 +17,7 @@ Neue <%= link_to 'Bar-Einladung erstellen', invitations_path(invitation: { role:
      <ul class="classic-ul">
       <% invitation.users.newest_first.each do |user| %>
         <li>
-          <%= user.name %> #<%= user.id %>
+          <%= render UserDisplayName.new(user, role_label: false) %> #<%= user.id %>
           <% if user.activated? %>
             <%= link_to "(deaktivieren)", invitation_user_path(invitation.id, user.id, user: { deactivated: true }), data: { turbo_method: 'put', turbo_track: 'reload' } %>
           <% else %>

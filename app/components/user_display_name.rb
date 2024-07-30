@@ -1,12 +1,14 @@
 class UserDisplayName < ViewComponent::Base
   erb_template <<~ERB
     <span class="<%= classes %>">
-      <%= text %>
+      <span class="truncate"><%= user.name %></span>
+      <span><%= role %></span>
     </span>
   ERB
 
-  def initialize(user)
+  def initialize(user, role_label: true)
     @user = user
+    @role_label = role_label
     super
   end
 
@@ -14,15 +16,16 @@ class UserDisplayName < ViewComponent::Base
 
   attr_reader :user
 
-  def text
-    return "#{user.name} (Admin)" if user.admin?
-    return "#{user.name} (Bar)" if user.bar?
+  def role
+    return nil unless @role_label
+    return '(Admin)' if user.admin?
 
-    user.name
+    '(Bar)' if user.bar?
   end
 
   def classes
-    Opentrink::Clsx.call(%w[inline-flex
+    Opentrink::Clsx.call(%w[inline-grid
+                            grid-cols-[1fr_auto]
                             item-baseline
                             rounded-md
                             px-2
