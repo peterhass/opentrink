@@ -44,20 +44,8 @@ class ConsumptionsController < ApplicationController
   end
 
   def save_consumption_and_update_scoreboard(consumption)
-    saved = false
-    did_scoreboard_change = false
-
-    consumption.transaction do
-      current_scoreboard_id = Score.fetch_scoreboard_id
-
-      saved = consumption.save
-      return unless saved
-
-      did_scoreboard_change = current_scoreboard_id != Score.fetch_scoreboard_id
+    ScoreboardNotifier.new.notify! do
+      consumption.save
     end
-
-    ActionCable.server.broadcast('scoreboard', :updated) if did_scoreboard_change
-
-    saved
   end
 end

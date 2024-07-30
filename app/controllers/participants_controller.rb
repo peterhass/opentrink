@@ -22,7 +22,10 @@ class ParticipantsController < ApplicationController
   def update
     participant = Participant.find_by!(id: params[:id])
 
-    participant.update!(params.require(:participant).permit(:deactivated))
+    ScoreboardNotifier.new.notify! do
+      participant.update!(params.require(:participant).permit(:deactivated))
+    end
+
     redirect_to action: :manage
   end
 
