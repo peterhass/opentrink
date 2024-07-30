@@ -3,7 +3,7 @@
 - Double check all '(QR-Code)' links to work on mobile chrome and mobile safari
 - Change invitations page to be usable on mobile
 - Change scoreboard design to fit on a big projector screen
-- Add truncation to ParticipantDisplayName
+- [DONE] Add truncation to ParticipantDisplayName
 - Free crash reporting
 - REGENERATE MASTER KEY, put it in gitignore
 - Prod: Include database in backup
