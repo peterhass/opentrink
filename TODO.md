@@ -1,27 +1,27 @@
 # TODOs
 
-- [TODO] REMOVE DEACTIVATED USERS FROM SCOREBOARDS (don't forget to notify channel)
-- [DONE] Create some general use view components
-- REGENERATE MASTER KEY, put it in gitignore
-- [DONE] Need some functionality to verify a user on the scoreboard 
-- Prod: Include database in backup
-- [DONE] Impress Page
-- [DONE] Data Privacy Page
-- Ask Konny to provide a proper privacy page
-- [DONE] New participant page: Add description of contest
-- [DONE] New participant page: Add explaination of how data is handeled and link to privacy page
-- Change scoreboard design to fit on a big projector screen
-- Change Invitations to use signed_id instead of uid's to allow setting of ttl's
-- Make design less horrible
-- Change invitations page to be usable on mobile
 - Double check all '(QR-Code)' links to work on mobile chrome and mobile safari
-- Change dashboard links to buttons (to make them usable on mobile)
-- Test: Participants stay logged in for at least three weeks
-- Idea: Give participants the ability to 'move devices'
-- Allow admin/bar users to hide participants (eg. if their names don't fit the etiquette)
+- Change invitations page to be usable on mobile
+- Change scoreboard design to fit on a big projector screen
 - Add truncation to ParticipantDisplayName
 - Free crash reporting
+- REGENERATE MASTER KEY, put it in gitignore
+- Prod: Include database in backup
 - Add validation to check for presence of count in Consumptions
+- Ask Konny to provide a proper privacy page
+- Change Invitations to use signed_id instead of uid's to allow setting of ttl's
+- Make design less horrible
+- Test: Participants stay logged in for at least three weeks
+- Idea: Give participants the ability to 'move devices'
+- [DONE] Change dashboard links to buttons (to make them usable on mobile)
+- [DONE] Allow admin/bar users to hide participants (eg. if their names don't fit the etiquette)
+- [TODO] REMOVE DEACTIVATED USERS FROM SCOREBOARDS (don't forget to notify channel)
+- [DONE] Create some general use view components
+- [DONE] Need some functionality to verify a user on the scoreboard 
+- [DONE] Impress Page
+- [DONE] Data Privacy Page
+- [DONE] New participant page: Add description of contest
+- [DONE] New participant page: Add explaination of how data is handeled and link to privacy page
 
 # Ideas
 - Scoreboard: 
