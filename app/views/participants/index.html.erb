@@ -3,6 +3,12 @@
   <p>
     Anzahl: <%= @participants.count %>
   </p>
+  <%= app_form_with(model: @filters, method: :get, url: participants_path, data: { turbo: false }) do |f| %>
+    <div class="flex gap-2 items-center">
+      <%= f.text_field(:q) %>
+      <%= f.submit("Search") %>
+    </div>
+  <% end %>
   <ul class="flex flex-col gap-5 divide-y divide-gray-200">
     <% @participants.each do |participant| %>
       <li class="py-3 flex flex-col">

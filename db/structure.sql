@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY);
 CREATE TABLE IF NOT EXISTS "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE sqlite_sequence(name,seq);
 CREATE TABLE IF NOT EXISTS "consumptions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "count" integer, "participant_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bdfe5b80f0"
 FOREIGN KEY ("participant_id")
   REFERENCES "participants" ("id")
 );
-CREATE TABLE sqlite_sequence(name,seq);
 CREATE INDEX "index_consumptions_on_participant_id" ON "consumptions" ("participant_id");
 CREATE TABLE IF NOT EXISTS "invitations" ("id" uuid NOT NULL PRIMARY KEY, "deactivated" boolean DEFAULT 0, "created_by_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "role" varchar DEFAULT 'bar' NOT NULL, CONSTRAINT "fk_rails_1e69da856c"
 FOREIGN KEY ("created_by_id")

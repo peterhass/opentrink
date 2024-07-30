@@ -3,6 +3,11 @@ class ParticipantsController < ApplicationController
 
   def index
     @participants = Participant.newest_first
+
+    @filters = ParticipantFiltersForm.new(
+      params.require(:participant_filters_form).permit(:q)
+    )
+    @participants = @participants.search_by_name(@filters.q) if @filters.q
   end
 
   def show

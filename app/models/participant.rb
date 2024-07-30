@@ -4,6 +4,7 @@ class Participant < ApplicationRecord
   has_many :consumptions
 
   scope :newest_first, -> { order(created_at: :desc) }
+  scope :search_by_name, ->(name) { where('name like ?', "%#{sanitize_sql_like(name)}%") }
 
   def activated?
     !deactivated?
@@ -13,7 +14,7 @@ class Participant < ApplicationRecord
     list = []
     remaining = id
 
-    until remaining <= 0 do
+    until remaining <= 0
       remaining, index = remaining.divmod(Opentrink::Emoji.alphabet.length)
       list.push(Opentrink::Emoji.alphabet[index])
     end
