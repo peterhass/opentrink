@@ -22,7 +22,6 @@ module UiHelper
          ])
   end
 
-
   def danger_button_class
     clsx(%w[
            unstyled

@@ -1,32 +1,47 @@
-<h1>Einladungen</h1>
-<p>
-Neue <%= link_to 'Bar-Einladung erstellen', invitations_path(invitation: { role: :bar }), data: { turbo_method: :post } %>
-</p>
-<ul class="classic-ul">
-  <% @invitations.each_with_index do |invitation, index| %>
-    <li>
-      <%= "Admin-Link" if invitation.admin? %>
-      <%= "Bar-Link" if invitation.bar? %>
-      
-      #<%= @invitations.length - (index + 1) %> <%= link_to '(QR Code)', new_invitation_user_url(invitation, format: 'png') if invitation.activated? %> 
-      <% if invitation.activated? %>
-        <%= link_to "(deaktivieren)", invitation_path(invitation.id, invitation: { deactivated: true }), data: { turbo_method: 'put' } %>
-      <% else %>
-        <%= link_to "(aktivieren)", invitation_path(invitation.id, invitation: { deactivated: false }), data: { turbo_method: 'put' } %>
-      <% end %>
-     <ul class="classic-ul">
-      <% invitation.users.newest_first.each do |user| %>
-        <li>
-          <%= render UserDisplayName.new(user, role_label: false) %> #<%= user.id %>
-          <% if user.activated? %>
-            <%= link_to "(deaktivieren)", invitation_user_path(invitation.id, user.id, user: { deactivated: true }), 
-              data: { turbo_method: 'put', turbo_track: 'reload', turbo_confirm: "Bist du dir sicher? User können nicht re-aktiviert werden." } %>
+
+<div class="grid gap-8 space-y space-y-3">
+  <div class="flex flex-row justify-between align-center">
+    <h1 class="text-3xl font-bold">Einladungen</h1>
+    <%= link_to '+ Bar', invitations_path(invitation: { role: :bar }),
+      data: { turbo_method: :post },
+      class: alternative_button_class %>
+  </div>
+  
+  <ul class="flex flex-col gap-5 divide-y divide-gray-200">
+    <% @invitations.each_with_index do |invitation, index| %>
+      <li class="py-3 flex flex-col gap-2">
+        <span class="<%= clsx('uppercase', 'font-bold', 'line-through' => invitation.deactivated?) %>">
+          <%= "Admin-Link" if invitation.admin? %>
+          <%= "Bar-Link" if invitation.bar? %>
+          #<%= @invitations.length - (index + 1) %> 
+        </span>
+        <div class="grid grid-cols-2">
+          <%= link_to 'QR Code', new_invitation_user_url(invitation, format: 'png') , class: alternative_button_class if invitation.activated? %> 
+          <% if invitation.activated? %>
+            <%= link_to "Deaktivieren", invitation_path(invitation.id, invitation: { deactivated: true }), data: { turbo_method: 'put' }, class: danger_button_class %>
           <% else %>
-            [deaktiviert]
+            <%= link_to "Aktivieren", invitation_path(invitation.id, invitation: { deactivated: false }), data: { turbo_method: 'put' }, class: alternative_button_class %>
           <% end %>
-        </li>
-      <% end %>
-     </ul>
-    </li>
-  <% end %>
-</ul>
+        </div>
+        <ul class="border-x-4 border-zinc-500 px-4 flex flex-col divide-y divide-gray-200 space-y space-y-1">
+          <% invitation.users.newest_first.each do |user| %>
+            <li 
+              class="data-[deactivated=true]:bg-gray-200 py-4 px-2 flex flex-col gap-2"
+              data-deactivated="<%= "true" if user.deactivated? %>">
+              <span>#<%= user.id %> <%= render UserDisplayName.new(user, role_label: false) %></span>
+
+              <span class="flex flex-col items-end">
+                <% if user.activated? %>
+                  <%= link_to "Deaktivieren", invitation_user_path(invitation.id, user.id, user: { deactivated: true }), 
+                    data: { turbo_method: 'put', turbo_track: 'reload', turbo_confirm: "Bist du dir sicher? User können nicht re-aktiviert werden." }, class: danger_button_class %>
+                <% else %>
+                  [deaktiviert]
+                <% end %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

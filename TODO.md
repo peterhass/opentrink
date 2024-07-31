@@ -1,7 +1,7 @@
 # TODOs
 
 - [DONE] Double check all '(QR-Code)' links to work on mobile chrome and mobile safari
-- Change invitations page to be usable on mobile
+- [DONE] Change invitations page to be usable on mobile
 - Change scoreboard design to fit on a big projector screen
 - [DONE] Add truncation to ParticipantDisplayName
 - Free crash reporting
