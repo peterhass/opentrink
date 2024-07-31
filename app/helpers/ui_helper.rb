@@ -18,7 +18,6 @@ module UiHelper
            px-5 py-2.5
            me-2 mb-2
            focus:outline-none
-           dark:focus:ring-blue-800
          ])
   end
 
@@ -37,7 +36,6 @@ module UiHelper
            px-5 py-2.5
            me-2 mb-2
            focus:outline-none
-           dark:focus:ring-red-800
          ])
   end
 
