@@ -36,7 +36,7 @@
       <%= link_to 'Teilnehmer-Liste', participants_path, class: alternative_button_class  %>
       <%= link_to 'Benutzerverwaltung', invitations_path, class: alternative_button_class  if current_user.admin? %>
       <%= link_to 'Teilnehmer-Registration', new_participant_path, class: alternative_button_class %> 
-      <%= link_to 'Teilnehmer-Registration (QR Code)', RQRCode::QRCode.new(new_participant_url).as_png(size: 500).to_data_url, class: alternative_button_class  %>
+      <%= link_to 'Teilnehmer-Registration (QR Code)', new_participant_path(format: 'png'), class: alternative_button_class  %>
     </div>
   <% else %>
     <%= link_to 'Jetzt mitmachen', new_participant_path, class: primary_button_class %>

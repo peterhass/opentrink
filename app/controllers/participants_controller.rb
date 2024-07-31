@@ -22,6 +22,19 @@ class ParticipantsController < ApplicationController
 
   def new
     @participant = Participant.new
+
+    respond_to do |format|
+      format.html
+      format.png do
+        image_stream = RQRCode::QRCode.new(new_participant_url)
+                                      .as_png(size: 500)
+                                      .to_datastream
+
+        send_data image_stream,
+                  type: 'image/png',
+                  disposition: 'inline'
+      end
+    end
   end
 
   def update

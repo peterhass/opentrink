@@ -3,6 +3,19 @@ class UsersController < ApplicationController
 
   def new
     @user = invitation.users.build
+
+    respond_to do |format|
+      format.html
+      format.png do
+        image_stream = RQRCode::QRCode.new(new_invitation_user_url(invitation))
+                                      .as_png(size: 500)
+                                      .to_datastream
+
+        send_data image_stream,
+                  type: 'image/png',
+                  disposition: 'inline'
+      end
+    end
   end
 
   def create
