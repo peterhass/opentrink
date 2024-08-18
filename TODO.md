@@ -6,7 +6,7 @@
 - [DONE] Add truncation to ParticipantDisplayName
 - Free crash reporting
 - REGENERATE MASTER KEY, put it in gitignore
-- Prod: Include database in backup
+- [DONE] Prod: Include database in backup
 - Add validation to check for presence of count in Consumptions
 - Ask Konny to provide a proper privacy page
 - Change Invitations to use signed_id instead of uid's to allow setting of ttl's
