@@ -26,11 +26,4 @@
 }
 
 @layer components {
-	ul.classic-ul {
-		@apply list-disc list-inside;
-	}
-
-	ul.classic-ul > li > ul.classic-ul {
-		@apply ml-3;
-	}
 }

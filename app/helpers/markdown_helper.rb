@@ -31,7 +31,7 @@ module MarkdownHelper
     def list(contents, list_type)
       tag = list_type == :unordered ? 'ul' : 'ol'
 
-      "<#{tag} class='max-w-md space-y-1 list-disc list-inside '>#{contents}</#{tag}>"
+      "<#{tag} class='space-y-1 list-disc list-inside '>#{contents}</#{tag}>"
     end
   end
 end
