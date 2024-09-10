@@ -6,6 +6,7 @@ RequiresMountsFor=%t/containers
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
+Environment=RAILS_MASTER_KEY=<fill-me-in>
 Environment=PORT=6432
 Restart=always
 ExecStartPre=/usr/bin/podman-compose pull

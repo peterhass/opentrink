@@ -8,6 +8,8 @@ services:
       - storage:/rails/storage
     ports:
       - "${PORT:-3000}:3000"
+    environment:
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     userns_mode: keep-id
 volumes:
   storage:
