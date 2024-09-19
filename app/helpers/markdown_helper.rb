@@ -18,7 +18,6 @@ module MarkdownHelper
     # https://github.com/vmg/redcarpet?tab=readme-ov-file#block-level-calls
 
     def header(text, header_level)
-      puts header_level.inspect
       classes = case header_level
                 when 1, 2
                   'text-lg'
