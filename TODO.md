@@ -2,16 +2,16 @@
 
 - [DONE] Double check all '(QR-Code)' links to work on mobile chrome and mobile safari
 - [DONE] Change invitations page to be usable on mobile
-- Change scoreboard design to fit on a big projector screen
+- [DONE] Change scoreboard design to fit on a big projector screen
 - [DONE] Add truncation to ParticipantDisplayName
 - Free crash reporting
-- REGENERATE MASTER KEY, put it in gitignore
+- [DONE] REGENERATE MASTER KEY, put it in gitignore
 - [DONE] Prod: Include database in backup
 - Add validation to check for presence of count in Consumptions
 - Ask Konny to provide a proper privacy page
 - Change Invitations to use signed_id instead of uid's to allow setting of ttl's
-- Make design less horrible
-- Test: Participants stay logged in for at least three weeks
+- [DONE] Make design less horrible
+- [DONE] Test: Participants stay logged in for at least three weeks
 - Idea: Give participants the ability to 'move devices'
 - [DONE] Change dashboard links to buttons (to make them usable on mobile)
 - [DONE] Allow admin/bar users to hide participants (eg. if their names don't fit the etiquette)
