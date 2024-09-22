@@ -1,9 +1,43 @@
-<div data-controller="scoreboard">
-  <ul class="classic-ul">
-    <% (@scoreboard&.participant_scores || []).each do |score| %>
-      <li>
-        <%= render(ParticipantDisplayName.new(score.participant)) %>: <%= score.total%>
-      </li>
-    <% end %>
-  </ul>
+<div class="bg-black grid h-full">
+  <header class="container mx-auto px-5 pt-5 flex flex-col bg-[#ad9b63]">
+    <h1 class="flex font-extrabold leading-none">
+      <%= link_to root_path, class: 'unstyled inline-flex flex-col gap-3.5' do %>
+        <span class="uppercase text-white text-6xl tracking-tight">Pfandl</span>
+        <span class="text-zinc-900 text-4xl tracking-widest">Bierolympiade</span>
+      <% end %>
+    </h1>
+    <div class="-mx-5 px-5 py-2 mt-5 bg-zinc-900 text-gray-200">
+      <span>Unterer Platz 3</span>
+      <span>9300 St. Veit an der Glan</span>
+    </div>
+  </header>
+        
+  <div data-controller="scoreboard" class="container mx-auto px-12 bg-[#ad9b63]">
+    <h2 class="text-right uppercase text-white text-[6vh] tracking-tight font-bold">Highscores</h2>
+    <ul class="grid grid-cols-[auto_1fr_auto] grid-rows-1 gap-1 bg-gray-800">
+      <% (@scoreboard&.participant_scores || []).each.with_index do |score, index| %>
+        <li class="col-span-3 grid grid-cols-subgrid bg-[#ad9b63] text-white py-4 items-center font-extrabold text-[5vh]">
+          <span>
+            <%= "#{"#%02d" % (index + 1)}" %>
+          </span>
+          <span>
+            <span class="<%= clsx(%w[inline-grid
+                            grid-cols-[1fr_auto]
+                            item-center
+                            gap-1
+                            px-2
+                            py-1
+                            font-medium
+                            ]) %>">
+              <span class="truncate"><%= score.participant.name %></span>
+              <span><%= score.participant.emoji_id %></span>
+            </span>
+          </span>
+          <span class="text-right">
+            <%= score.total%> 🍺
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
