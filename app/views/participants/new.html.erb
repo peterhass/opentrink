@@ -1,3 +1,11 @@
+<% if current_participant %>
+  <div class="grid gap-2 mb-[100vh]">
+    <p class="font-bold">
+    Hallo <%= render(ParticipantDisplayName.new(current_participant)) %>, du nimmst am Gewinnspiel teil! 
+    </p>
+    <%= link_to 'Jetzt Bier scannen', participant_path(current_participant), class: primary_button_class %>
+  </div>
+<% end %>
 <%= app_form_with model: @participant, data: { turbo: false } do |form| %>
   <div class="grid gap-6">
     <%= mark do %>
@@ -27,12 +35,19 @@
       * 3. Platz: Jahresvorrat Villacher Bier
     <% end %>
     <% if current_participant %>
-      <p>Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!</p>
+      <p class="p-4 mb-4 text-lg text-red-800 rounded-lg bg-red-50">
+        Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!
+      </p>
     <% end %>
     <%= form.input_group do %>
       <%= form.label :name, "Teilnehmer-Name" %>
       <%= form.text_field :name %>
       <%= form.error_texts :name %>
+    <% end %>
+    <% if current_participant %>
+      <p class="p-4 mb-4 text-lg text-red-800 rounded-lg bg-red-50">
+        Achtung! Du nimmst aktuell schon als '<%= link_to current_participant.name, participant_path(current_participant) %>' am Gewinnspiel teil. Wenn du dich nochmals registrierst, verlierst du deinen Platz!
+      </p>
     <% end %>
     <%= form.submit "Teilnehmen!" %>
     <%= mark do %>
